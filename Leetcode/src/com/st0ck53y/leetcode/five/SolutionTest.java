@@ -1,7 +1,5 @@
 package com.st0ck53y.leetcode.five;
 
-import java.util.Scanner;
-
 import org.junit.Assert;
 import org.junit.Test;
 
