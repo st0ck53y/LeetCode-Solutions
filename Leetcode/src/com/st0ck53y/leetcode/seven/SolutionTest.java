@@ -4,7 +4,46 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class SolutionTest {
-
+	@Test
+	public void test0() {
+		Solution solution = new Solution();
+		int expected = 0;
+		int actual = solution.reverse(0);
+		Assert.assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void test10() {
+		Solution solution = new Solution();
+		int expected = 1;
+		int actual = solution.reverse(10);
+		Assert.assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testNeg10() {
+		Solution solution = new Solution();
+		int expected = -1;
+		int actual = solution.reverse(-10);
+		Assert.assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void test1000() {
+		Solution solution = new Solution();
+		int expected = 1;
+		int actual = solution.reverse(1000);
+		Assert.assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testNeg1000() {
+		Solution solution = new Solution();
+		int expected = -1;
+		int actual = solution.reverse(-1000);
+		Assert.assertEquals(expected, actual);
+	}
+	
 	@Test
 	public void test123() {
 		Solution solution = new Solution();
@@ -66,6 +105,22 @@ public class SolutionTest {
 		Solution solution = new Solution();
 		int expected = -2143847412;
 		int actual = solution.reverse(-2147483412);
+		Assert.assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testUnderflow() {
+		Solution solution = new Solution();
+		int expected = 0;
+		int actual = solution.reverse(-1345214235);
+		Assert.assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testSomething() {
+		Solution solution = new Solution();
+		int expected = 214748364;
+		int actual = solution.reverse(463847412);
 		Assert.assertEquals(expected, actual);
 	}
 }

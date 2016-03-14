@@ -2,23 +2,40 @@ package com.st0ck53y.leetcode.seven;
 
 public class Solution {
 	public int reverse(int x) {
-		if (x == Integer.MIN_VALUE) return 0;
+		if (x == Integer.MIN_VALUE || x == 0) return 0;
         boolean neg = false;
         if (x < 0) {
         	neg = true;
         	x = -x;
         }
         int num = 0;
-        String val = String.valueOf(x);
-        int size = val.length() - 1;
-        int dord = (int)Math.pow(10, size);
-        int iord = 1;
-        for (int i = size; i >= 0; i--) {
-        	num += ((x / dord) % 10) * iord;
-        	dord /= 10;
-        	iord *= 10;
+        int div = 1;
+        int od = 1;
+        int val = 0;
+        boolean die = false;
+        do {
+        	num *= 10;
+        	val = (x / div) % 10;
+        	num += val;
+        	od = div;
+        	div *= 10;
+        	if (((long)num) * 10 != num * 10) {
+        		die = true;
+        		break;
+        	}
+        } while (val != 0 || (x / div) > 0);
+        if (x / od > 0) return 0;
+        if (!die) {
+        	num /= 10;
+        	od /= 10;
         }
-        if (((num / (int)Math.pow(10, size)) % 10) != x % 10) return 0;
-		return (neg ? -num : num);
+        while (num % 10 == 0) {
+        	num /= 10;
+        }
+        if ((num / od) == x % 10 && !neg) return num;
+        num = -num;
+        if (div % 10 != 0) return num;
+        if (x / div != 0) return 0;
+		return num;
     }
 }
